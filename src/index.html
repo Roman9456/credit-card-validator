@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Credit Card Validator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="card-validator">
+    <input type="text" id="card-number" placeholder="Enter your card number">
+    <div id="card-type"></div>
+    <div id="validation-result"></div>
+    <a id="submitform" class="btn btn-success">Click to Validate</a>
+    <div class="card-icons">
+      <img src="./assets/visa-curved.png" alt="Visa" id="visa" class="card-icon">
+      <img src="./assets/mastercard-straight.png" alt="MasterCard" id="mastercard" class="card-icon">
+      <img src="./assets/credit-american-express.png" alt="Amex" id="amex" class="card-icon">
+      <img src="./assets/discover-straight-32px.png" alt="Discover" id="discover" class="card-icon">
+      <img src="./assets/Mir_Pay_logo.png" alt="Mir" id="mir" class="card-icon">
+      <img src="./assets/diners-club.png" alt="Diners Club" id="diners" class="card-icon">
+      <img src="./assets/pepsized-jcb.png" alt="JCB" id="jcb" class="card-icon">
+    </div>
+  </div>
+  <table id="card-hints">
+    <thead>
+      <tr>
+        <th>Credit Card Type</th>
+        <th>Credit Card Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>American Express</td>
+        <td>371449635398431</td>
+      </tr>
+      <tr>
+        <td>Diners Club</td>
+        <td>30569309025904</td>
+      </tr>
+      <tr>
+        <td>Discover</td>
+        <td>6011111111111117</td>
+      </tr>
+      <tr>
+        <td>JCB</td>
+        <td>3530111333300000</td>
+      </tr>
+      <tr>
+        <td>MasterCard</td>
+        <td>5555555555554444</td>
+      </tr>
+      <tr>
+        <td>Visa</td>
+        <td>4111111111111111</td>
+      </tr>
+      <tr>
+        <td>Mir</td>
+        <td>2200000000000000</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script src="index.js" type="module"></script>
+</body>
+</html>

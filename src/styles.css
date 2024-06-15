@@ -1,0 +1,73 @@
+#card-validator {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  #card-number {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  #card-type,
+  #validation-result {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .btn:hover {
+    background-color: #45a049;
+  }
+  
+  .card-icons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .card-icon {
+    width: 50px;
+    transition: opacity 0.5s, transform 0.3s;
+  }
+  
+  .card-icon.active {
+    opacity: 1;
+    transform: scale(1.1); 
+  }
+  
+  #card-hints {
+    margin: 20px auto;
+    width: 80%;
+    border-collapse: collapse;
+  }
+  
+  #card-hints th, #card-hints td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #card-hints th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+  }
+  
