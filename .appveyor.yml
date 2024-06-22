@@ -9,7 +9,9 @@ branches:
 cache: node_modules  
 
 install:
-  - yarn 
+  - nvm install 18.12.0 
+  - nvm use 18.12.0  
+  - yarn
 
 build: off  
 
