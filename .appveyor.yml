@@ -2,7 +2,7 @@ image: Ubuntu1804
 
 branches:
   only:
-    - main
+    - main 
 
 init:
   - echo "Installing NVM..."
@@ -26,14 +26,11 @@ test_script:
   - yarn test  
 
 deploy_script:
-deploy_script:
   - echo "Deploying to GitHub Pages..."
-  - cp -r dist/* .  
-  - git config user.name "AppVeyor"  
-  - git config user.email "ci@appveyor.com"  
-  - git add .  
-  - git commit -m "Deploy to GitHub Pages"  
-  - echo "https://$GITHUB_TOKEN:x-oauth-basic@github.com" > "$HOME/.git-credentials" 
-  - git push origin HEAD:gh-pages  
+  - cp -r dist/* .  # Copy contents of dist directory to root
+  - git config user.name "AppVeyor"  # Configure Git user name
+  - git config user.email "ci@appveyor.com"  # Configure Git user email
+  - git config credential.helper "store --file=$HOME/.git-credentials"  # Set Git credential helper
+  - echo "https://$GITHUB_TOKEN:x-oauth-basic@github.com" > "$HOME/.git-credentials"  # Setup Git credentials
+  - git push origin HEAD:gh-pages  # Push changes to gh-pages branch
   - echo "Deployment complete."
-
