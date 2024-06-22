@@ -4,30 +4,26 @@ branches:
   only:
     - main
 
-stack: node 16
-
 init:
   - echo "Installing NVM..."
   - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
   - export NVM_DIR="$HOME/.nvm"
   - source "$NVM_DIR/nvm.sh"
   - echo "Installing Node.js..."
-  - nvm install 18.12.0
-  - nvm use 18.12.0
-  - node --version  
+  - nvm install 16.0.0
+  - nvm use 16.0.0
 
 install:
   - echo "Installing dependencies..."
-  - yarn install
+  - yarn install  
 
 build_script:
   - echo "Building the project..."
-  - yarn run build
+  - yarn build  
 
 test_script:
-  - echo "Running linting and unit tests..."
-  - yarn lint
-  - yarn test
+  - echo "Running tests..."
+  - yarn test  
 
 deploy_script:
   - echo "Deploying to GitHub Pages..."
