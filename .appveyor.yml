@@ -1,33 +1,39 @@
-image: Ubuntu1804  
-
-stack: node 12 
+image: Ubuntu1804
 
 branches:
   only:
-    - main  
+    - main
 
-cache: node_modules  
+environment:
+  matrix:
+    - nodejs_version: "14"
+
+init:
+  - echo "Installing NVM..."
+  - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+  - export NVM_DIR="$HOME/.nvm"
+  - source "$NVM_DIR/nvm.sh"
+  - echo "Installing Node.js..."
+  - nvm install $nodejs_version
+  - nvm use $nodejs_version
 
 install:
-  - nvm install --lts 
-  - nvm use --lts  
-  - yarn
-
-build: off  
+  - echo "Installing dependencies..."
+  - yarn install
 
 build_script:
-  - yarn build   
+  - echo "Building the project..."
+  - yarn run build 
 
 test_script:
-  - yarn lint && yarn test 
+  - yarn lint && yarn test
   - yarn start &
   - sleep 3
   - yarn e2e
 
-
 artifacts:
   - path: dist
-    name: artifact  # Specify artifacts to be saved
+    name: artifact
 
 deploy_script:
   - echo "Configuring Git..."
