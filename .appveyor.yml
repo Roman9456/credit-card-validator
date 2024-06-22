@@ -27,10 +27,17 @@ test_script:
 
 deploy_script:
   - echo "Deploying to GitHub Pages..."
-  - cp -r dist/* .  
-  - git config user.name "AppVeyor"  
-  - git config user.email "ci@appveyor.com"  
-  - git config credential.helper "store --file=$HOME/.git-credentials"  
-  - echo "https://$GITHUB_TOKEN:x-oauth-basic@github.com" > "$HOME/.git-credentials"  
-  - git push origin HEAD:gh-pages  
+  - git clone --branch gh-pages git@github.com:Roman9456/credit-card-validator gh-pages-temp
+  - cd gh-pages-temp
+  - git rm -rf .
+  - cd ..
+  - cp -r dist/. gh-pages-temp
+  - cd gh-pages-temp
+  - git config user.name "AppVeyor"
+  - git config user.email "ci@appveyor.com"
+  - git add .
+  - git commit -m "Deploy to GitHub Pages"
+  - git push origin HEAD:gh-pages --force
+  - cd ..
+  - rm -rf gh-pages-temp
   - echo "Deployment complete."
