@@ -1,29 +1,34 @@
 image: Ubuntu1804  # Build environment image
 
-stack: node 10  # Node.js version
+stack: node 12  # Node.js version
 
 branches:
   only:
     - main  # Git branch to build from
 
-cache: node_modules  # Cache node_modules directory for faster builds
+cache:
+  - node_modules  # Cache node_modules directory for faster builds
 
 install:
+  - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash  # Install NVM
+  - export NVM_DIR="$HOME/.nvm"  # Export NVM_DIR
+  - source "$NVM_DIR/nvm.sh"  # Load NVM
+  - nvm install $stack  # Install specified Node.js version
+  - nvm use $stack  # Use specified Node.js version
   - yarn  # Install dependencies using Yarn package manager
 
-build: off  # Disable AppVeyor's default build process
-
 build_script:
-  - yarn build  # Command to build the project
+  - yarn build  # Command to build the project (if needed)
 
 test_script:
   - yarn lint && yarn test  # Command to run linting and tests
   - yarn start &  # Start the application in the background
-  - sleep 3  # Wait for the applicatio
+  - sleep 3  # Wait for the application to start
+  - yarn e2e  # Run end-to-end tests
 
 artifacts:
   - path: dist
-    name: artifact
+    name: artifact  # Specify artifacts to be saved
 
 deploy_script:
   - echo "Configuring Git..."
