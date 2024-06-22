@@ -1,30 +1,27 @@
-image: Ubuntu1804  # Build environment image
+image: Ubuntu1804  
 
-stack: node 12  # Node.js version
+stack: node 12 
 
 branches:
   only:
-    - main  # Git branch to build from
+    - main  
 
-cache:
-  - node_modules  # Cache node_modules directory for faster builds
+cache: node_modules  
 
 install:
-  - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-  - export NVM_DIR="$HOME/.nvm"
-  - source "$NVM_DIR/nvm.sh"
-  - nvm install $(<.nvmrc) 
-  - nvm use $(<.nvmrc)      
-  - yarn
+  - yarn 
+
+build: off  
 
 build_script:
-  - yarn build  # Command to build the project (if needed)
+  - yarn build   
 
 test_script:
-  - yarn lint && yarn test  # Command to run linting and tests
-  - yarn start &  # Start the application in the background
-  - sleep 3  # Wait for the application to start
-  - yarn e2e  # Run end-to-end tests
+  - yarn lint && yarn test 
+  - yarn start &
+  - sleep 3
+  - yarn e2e
+
 
 artifacts:
   - path: dist
