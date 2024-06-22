@@ -5,10 +5,11 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "lint": "eslint .",
+    "lint": "eslint . --fix",
     "test": "jest --testPathPattern=./src/ --passWithNoTests",
     "coverage": "jest --testPathPattern=./src/ --coverage --passWithNoTests",
-    "e2e": "jest --testPathPattern=./e2e/ --passWithNoTests"
+    "e2e": "jest --testPathPattern=./e2e/ --passWithNoTests" 
+    
   },
   "jest": {
     "transform": {
