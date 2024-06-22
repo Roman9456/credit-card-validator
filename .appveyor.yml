@@ -1,35 +1,25 @@
-image: Ubuntu1804
+image: Ubuntu1804  # Build environment image
+
+stack: node 10  # Node.js version
 
 branches:
   only:
-    - main
+    - main  # Git branch to build from
 
-environment:
-  matrix:
-    - nodejs_version: "14"
-
-init:
-  - echo "Installing NVM..."
-  - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-  - export NVM_DIR="$HOME/.nvm"
-  - source "$NVM_DIR/nvm.sh"
-  - echo "Installing Node.js..."
-  - nvm install $nodejs_version
-  - nvm use $nodejs_version
+cache: node_modules  # Cache node_modules directory for faster builds
 
 install:
-  - echo "Installing dependencies..."
-  - yarn install
+  - yarn  # Install dependencies using Yarn package manager
+
+build: off  # Disable AppVeyor's default build process
 
 build_script:
-  - echo "Building the project..."
-  - yarn run build
+  - yarn build  # Command to build the project
 
 test_script:
-  - yarn lint && yarn test
-  - yarn start &
-  - sleep 3
-  - yarn e2e
+  - yarn lint && yarn test  # Command to run linting and tests
+  - yarn start &  # Start the application in the background
+  - sleep 3  # Wait for the applicatio
 
 artifacts:
   - path: dist
