@@ -6,7 +6,7 @@ branches:
 
 environment:
   matrix:
-    - nodejs_version: "14"
+    - nodejs_version: "18"
 
 init:
   - echo "Installing NVM..."
@@ -19,7 +19,11 @@ init:
 
 install:
   - echo "Installing dependencies..."
-  - yarn install --frozen-lockfile
+  - yarn install
+
+build_script:
+  - echo "Building the project..."
+  - yarn run build
 
 test_script:
   - yarn lint && yarn test
