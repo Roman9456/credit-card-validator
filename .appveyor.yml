@@ -19,11 +19,7 @@ init:
 
 install:
   - echo "Installing dependencies..."
-  - yarn install
-
-build_script:
-  - echo "Building the project..."
-  - yarn run build 
+  - yarn install --frozen-lockfile
 
 test_script:
   - yarn lint && yarn test
