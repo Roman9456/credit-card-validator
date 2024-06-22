@@ -10,12 +10,12 @@ cache:
   - node_modules  # Cache node_modules directory for faster builds
 
 install:
-  - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash  # Install NVM
-  - export NVM_DIR="$HOME/.nvm"  # Export NVM_DIR
-  - source "$NVM_DIR/nvm.sh"  # Load NVM
-  - nvm install $stack  # Install specified Node.js version
-  - nvm use $stack  # Use specified Node.js version
-  - yarn  # Install dependencies using Yarn package manager
+  - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+  - export NVM_DIR="$HOME/.nvm"
+  - source "$NVM_DIR/nvm.sh"
+  - nvm install $(<.nvmrc) 
+  - nvm use $(<.nvmrc)      
+  - yarn
 
 build_script:
   - yarn build  # Command to build the project (if needed)
