@@ -6,7 +6,8 @@
     "lint": "eslint . --fix",
     "test": "jest --testPathPattern=./src/ --passWithNoTests",
     "coverage": "jest --testPathPattern=./src/ --coverage --passWithNoTests",
-    "e2e": "jest --testPathPattern=./e2e/ --passWithNoTests"
+    "e2e": "jest --testPathPattern=./e2e/ --passWithNoTests",
+    "build": "babel src -d dist"
   },
   "jest": {
     "transform": {
