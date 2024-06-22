@@ -4,9 +4,7 @@ branches:
   only:
     - main
 
-environment:
-  matrix:
-    - nodejs_version: "18.12.0"
+stack: node 16
 
 init:
   - echo "Installing NVM..."
