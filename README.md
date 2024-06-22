@@ -11,4 +11,3 @@ Enter a credit card number to validate its format and identify the card type.
 ## Development
 
 ### Install dependencies
-
